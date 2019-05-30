@@ -2,3 +2,20 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+function NumberOfProducts(numberOfProducts) {
+
+    var value = numberOfProducts.value;
+
+    $.ajax({
+        url: '/Home/NumberOfProducts',
+        data: value,
+        success: function (data) {
+            //Do Stuff With Response 
+        }
+    });
+
+
+
+    //alert(value);
+}

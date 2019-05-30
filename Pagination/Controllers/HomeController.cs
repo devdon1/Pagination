@@ -12,7 +12,7 @@ namespace Pagination.Controllers
     {
         List<Product> products = new List<Product>();
 
-        decimal pageSize = 4; // maximum of products displayed per page
+        decimal pageSize = 5; // maximum of products displayed per page
         decimal page = 1;
         decimal skipSize = 0;
         decimal numberOfPages = 0;
@@ -22,7 +22,7 @@ namespace Pagination.Controllers
             return View();
         }
 
-        public IActionResult Products(decimal? pageNumber)
+        public IActionResult Products(decimal? pageNumber, int productsPerPage)
         {
 
             page = pageNumber == null ? 1 : (decimal) pageNumber;
@@ -32,12 +32,13 @@ namespace Pagination.Controllers
 
             // Get the number of products
             int numberOfProducts = products.Count();
+            ViewBag.ProductCount = products.Count();
 
-            // Decide which text is on the site related to the number of products
+            // Decide which text is  displayed on the page related to the number of products
             switch (numberOfProducts)
             {
                 case 0:
-                    ViewBag.NumberOfProducts = "Oh nooo! There are no in store :(";
+                    ViewBag.NumberOfProducts = "Oh nooo! There are no products in store :(";
                   break;
                 case 1:
                     ViewBag.NumberOfProducts = "There is only 1 product in store";
@@ -64,13 +65,18 @@ namespace Pagination.Controllers
         /// </summary>
         private void PopulateProducts()
         {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 30; i++)
             {
                 Product p = new Product()
                 { Name = "product"+i };
 
                 products.Add(p);
             }
+        }
+
+        public void NumberOfProducts(string value)
+        {
+
         }
 
 
