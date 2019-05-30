@@ -22,11 +22,6 @@ namespace Pagination.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult Products(decimal? pageNumber)
         {
             page = pageNumber == null ? 1 : (decimal) pageNumber;
