@@ -10,6 +10,7 @@ function NumberOfProducts(numberOfProducts) {
     $.ajax({
         url: '/Home/NumberOfProducts',
         data: value,
+        type: 'POST',
         success: function (data) {
             //Do Stuff With Response 
         }

@@ -74,6 +74,7 @@ namespace Pagination.Controllers
             }
         }
 
+        [HttpPost]
         public void NumberOfProducts(string value)
         {
 
