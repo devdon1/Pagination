@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Pagination.Models.Product>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Products</title>
+</head>
+<body>
+    <h1>Products</h1>
+    @foreach (var p in Model.ToList())
+    {
+        <div>@p.Name</div>
+    }
+
+
+        <ul class="pagination">
+            @for (int i = 1; i <= @ViewBag.NumberOfPages; i++)
+            {
+                @Html.ActionLink(i.ToString(),"Products", "Home", new { pageNumber = i })
+            }
+        </ul>
+</body>
+</html>
