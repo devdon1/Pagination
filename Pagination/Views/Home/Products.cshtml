@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1>Products</h1>
+
+    <div>@ViewBag.NumberOfProducts</div><br />
+
     @foreach (var p in Model.ToList())
     {
         <div>@p.Name</div>
