@@ -75,9 +75,9 @@ namespace Pagination.Controllers
         }
 
         [HttpPost]
-        public void NumberOfProducts(string value)
+        public IActionResult NumberOfProducts(string value)
         {
-
+            return Json("it worked!");
         }
 
 

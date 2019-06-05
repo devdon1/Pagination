@@ -1,22 +1,12 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
 function NumberOfProducts(numberOfProducts) {
 
-    var value = numberOfProducts.value;
+    // Get the selected value
+    var numberOfProductsValue = numberOfProducts.value;
 
-    $.ajax({
-        url: '/Home/NumberOfProducts',
-        data: value,
-        type: 'POST',
-        success: function (data) {
-            //Do Stuff With Response 
-        }
-    });
+    // Prepare URL for fetch call
+    var url = "/Home/NumberOfProducts?" + $.param({ value: numberOfProductsValue});
 
-
-
-    //alert(value);
+    // Execute the fetch call
+    fetch(url, {method: "POST"}).then(response => console.log(response));
 }
