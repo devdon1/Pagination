@@ -82,7 +82,7 @@ namespace Pagination.Controllers
         public IActionResult NumberOfProducts(string value)
         {
             //Products(null, Int32.Parse(value));
-            return RedirectToAction("Index", new { value });
+            return RedirectToAction("Index", new { productsPerPage = value });
         }
     }
 }
