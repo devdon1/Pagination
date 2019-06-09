@@ -5,7 +5,7 @@ function NumberOfProducts(numberOfProducts) {
     var numberOfProductsValue = numberOfProducts.value;
 
     // Prepare URL for fetch call
-    var url = "/Home/NumberOfProducts?" + $.param({ value: numberOfProductsValue});
+    var url = "/Product/NumberOfProducts?" + $.param({ value: numberOfProductsValue});
 
     // Execute the fetch call
     fetch(url, {method: "POST"}).then(response => console.log(response));

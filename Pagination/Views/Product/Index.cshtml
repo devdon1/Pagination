@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Pagination.Models.Product>
+
+
+<h4>Products</h4>
+
+<div>@ViewBag.NumberOfProducts</div><br />
+
+
+@foreach (var p in Model.ToList())
+{
+    <div>@p.Name</div>
+}
+
+<br />
+<ul class="pagination">
+    @for (int i = 1; i <= @ViewBag.NumberOfPages; i++)
+    {
+        @Html.ActionLink(i.ToString(), "Products", "Home", new { pageNumber = i })
+    }
+</ul>
+
+<span>
+    Show
+    <select id="numberOfProductsSelector" onchange="NumberOfProducts(this)">
+
+        @{
+            int productsPerPage = (int)ViewBag.producstsPersPage;
+            int numberOfRuns = (ViewBag.ProductCount / productsPerPage) - 1;
+            int index = 1;
+
+            while (index <= numberOfRuns)
+            {
+                <option>@productsPerPage</option>
+
+                productsPerPage += ViewBag.producstsPersPage;
+                index++;
+            }
+        }
+
+        <option value="all">All</option>
+    </select> product(s) per page
+</span>
+
+@{ await Html.RenderPartialAsync("_ProductPagination");}
