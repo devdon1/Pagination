@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Pagination.Models.Product>
 
+@{
+    ViewData["Title"] = "Product Page";
+}
 
 <h4>Products</h4>
 
@@ -24,7 +27,7 @@
     <select id="numberOfProductsSelector" onchange="NumberOfProducts(this)">
 
         @{
-            int productsPerPage = (int)ViewBag.producstsPersPage;
+            int productsPerPage = (int)ViewBag.productsPersPage;
             int numberOfRuns = (ViewBag.ProductCount / productsPerPage) - 1;
             int index = 1;
 
@@ -37,6 +40,6 @@
             }
         }
 
-        <option value="all">All</option>
+        <option value="@ViewBag.ProductCount">All</option>
     </select> product(s) per page
 </span>
