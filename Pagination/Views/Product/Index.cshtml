@@ -18,7 +18,7 @@
 <ul class="pagination">
     @for (int i = 1; i <= @ViewBag.NumberOfPages; i++)
     {
-        @Html.ActionLink(i.ToString(), "Index", "Product", new { pageNumber = i })
+        @Html.ActionLink(i.ToString(), "Index", "Product", new { pageNumber = i, productsPerPage = ViewBag.productsPerPage })
     }
 </ul>
 
@@ -27,7 +27,7 @@
     <select id="numberOfProductsSelector" onchange="NumberOfProducts(this)">
 
         @{
-            int productsPerPage = (int)ViewBag.productsPersPage;
+            int productsPerPage = 5; //(int)ViewBag.productsPerPage;
             int numberOfRuns = (ViewBag.ProductCount / productsPerPage) - 1;
             int index = 1;
 
@@ -35,7 +35,7 @@
             {
                 <option>@productsPerPage</option>
 
-                productsPerPage += ViewBag.producstsPersPage;
+                productsPerPage += 5;//ViewBag.productsPerPage;
                 index++;
             }
         }

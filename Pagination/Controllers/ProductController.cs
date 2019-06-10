@@ -33,7 +33,7 @@ namespace Pagination.Controllers
             // After initial load of the page, the pageSize is set at 5
             pageSize = productsPerPage == 0 ? 5 : productsPerPage;
 
-            ViewBag.productsPersPage = pageSize;
+            ViewBag.productsPerPage = pageSize;
 
             // Decide which text is displayed on the page related to the number of products (how many in stock)
             switch (numberOfProducts)
@@ -86,7 +86,8 @@ namespace Pagination.Controllers
         [HttpPost]
         public IActionResult NumberOfProducts(string value)
         {
-            return RedirectToAction("Index", new { productsPerPage = value });
+            string redirectUrl = Url.Action("Index", new { productsPerPage = value });
+            return Json(redirectUrl);
         }
     }
 }
