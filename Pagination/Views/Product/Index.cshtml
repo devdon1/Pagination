@@ -33,7 +33,15 @@
 
             while (index <= numberOfRuns)
             {
-                <option>@productsPerPage</option>
+                if (productsPerPage == ViewBag.ProductsPerPage)
+                {
+                    <option selected="selected">@productsPerPage</option>
+                }
+                else
+                {
+                    <option>@productsPerPage</option>
+                }
+
 
                 productsPerPage += 5;//ViewBag.productsPerPage;
                 index++;
